@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Eatery</string>
+    <string name="login_button">Login</string>
+    <string name="register_button">Register</string>
+    <string name="promt_email">Email</string>
+    <string name="promt_password">Password</string>
+    <string name="promt_name">Name</string>
+    <string name="promt_hostel">Hostel</string>
+    <string name="promt_room">Room</string>
+    <string name="promt_phone_number">Phone Number</string>
+    <string name="promt_confirm_password">Confirm Password</string>
+    <string name="sign_up_with_email">Sign up using Email</string>
+    <string name="sign_up">Sign up</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">Password too short or does not match</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="deliverin_food_to">Delivering Food To</string>
+    <string name="customer_name">Paras Gupta</string>
+    <string name="sign_out">Sign out</string>
+    <string name="pizzeria">Pizzeria</string>
+    <string name="twelvetables">12 Tables</string>
+    <string name="mac_n_cheese">Mac n Cheese</string>
+    <string name="sand_p">Sandpiper</string>
+
+
+</resources>

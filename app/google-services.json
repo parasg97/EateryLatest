@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1053397015140",
+    "firebase_url": "https://eatery-34fbe.firebaseio.com",
+    "project_id": "eatery-34fbe",
+    "storage_bucket": "eatery-34fbe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1053397015140:android:a802ff5e6328b9ba",
+        "android_client_info": {
+          "package_name": "com.persi.eatery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1053397015140-n10k1nsag2ftfr25glnosgdjrhq15dnq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHwmZaMXw6UgQGTQ6C5gHi7KTPQvet_zI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
