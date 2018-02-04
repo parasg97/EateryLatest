@@ -19,7 +19,7 @@ public class ShoppingCart extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if(extras !=null) {
             Log.d("Eatery","wtfff");
-            String mUsername = extras.getString("USER_NAME");
+            mUsername = extras.getString("USER_NAME");
             mUser_name=findViewById(R.id.name_textview);
             mUser_name.setText(mUsername);
         }
