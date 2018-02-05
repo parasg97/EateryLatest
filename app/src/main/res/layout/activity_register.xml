@@ -118,20 +118,21 @@
             android:inputType="textPassword"
             android:textColor="@android:color/background_dark" />
 
-        <Button
-            android:id="@+id/sign_up"
-            style="?android:attr/buttonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="#FF27AE60"
-            android:onClick="signUp"
-            android:text="@string/sign_up"
-            android:textColor="@android:color/background_light"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            tools:text="@string/sign_up" />
+
 
     </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/sign_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#FF27AE60"
+        android:onClick="signUp"
+        android:text="@string/sign_up"
+        android:textColor="@android:color/background_light"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:text="@string/sign_up" />
 
 </LinearLayout>

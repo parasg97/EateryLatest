@@ -35,6 +35,7 @@ public class Register extends AppCompatActivity {
     private TextInputEditText mConfirmPasswordView;
     private DatabaseReference mUserDetails;
     private String uId;
+    private String pushKey;
 
     //Firebase auth
     private FirebaseAuth mAuth;
@@ -199,7 +200,11 @@ public class Register extends AppCompatActivity {
                             }
                             UserDetails details=new UserDetails(name,email,hostel,room,phone_no,uId);
                             mUserDetails= FirebaseDatabase.getInstance().getReference();
-                            mUserDetails.child("UserDetails").push().setValue(details);
+                            //mUserDetails.child("UserDetails2").push().setValue(details);
+                            mUserDetails.child("UserDetails").child(uId).setValue(details);
+                            /*pushKey=mUserDetails.child("ud3").push().getKey();
+                            //use this code for getting the key for push operation then
+                            mUserDetails.child("ud3").child(pushKey).setValue(details);*/
                             Intent intent = new Intent(Register.this, Login_Activity.class);
                             finish();
                             startActivity(intent);
