@@ -14,13 +14,14 @@ public class ShoppingCart extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
         setContentView(R.layout.activity_shopping_cart);
         Log.d("Eatery","wtfff2");
         Bundle extras = getIntent().getExtras();
         if(extras !=null) {
             Log.d("Eatery","wtfff");
             mUsername = extras.getString("USER_NAME");
-            mUser_name=findViewById(R.id.name_textview);
+            mUser_name=findViewById(R.id.restaurant_listView);
             mUser_name.setText(mUsername);
         }
 

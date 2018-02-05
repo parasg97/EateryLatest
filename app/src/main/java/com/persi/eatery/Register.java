@@ -12,11 +12,13 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -32,6 +34,7 @@ public class Register extends AppCompatActivity {
     private TextInputEditText mPasswordView;
     private TextInputEditText mConfirmPasswordView;
     private DatabaseReference mUserDetails;
+    private String uId;
 
     //Firebase auth
     private FirebaseAuth mAuth;
@@ -174,6 +177,7 @@ public class Register extends AppCompatActivity {
 
 
 
+
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this,
                 new OnCompleteListener<AuthResult>() {
 
@@ -186,7 +190,14 @@ public class Register extends AppCompatActivity {
                             showErrorDialog("Registration attempt failed");
                         } else {
                             //saveDisplayName();
-                            UserDetails details=new UserDetails(name,email,hostel,room,phone_no);
+
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            if (user != null) {
+                                uId=user.getUid();
+                            } else {
+                                Log.d("Eatery","no user signed in");
+                            }
+                            UserDetails details=new UserDetails(name,email,hostel,room,phone_no,uId);
                             mUserDetails= FirebaseDatabase.getInstance().getReference();
                             mUserDetails.child("UserDetails").push().setValue(details);
                             Intent intent = new Intent(Register.this, Login_Activity.class);

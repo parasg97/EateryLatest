@@ -27,19 +27,20 @@ public class RestaurantActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
         setContentView(R.layout.activity_restaurant);
 
-        mHotelListArray.add(new Hotel_Object("Pizzeria",R.drawable.ic_pizza,"South Indian, North Indian","60 min Rs200 minimum"));
-        mHotelListArray.add(new Hotel_Object("Mac n Cheese",R.drawable.ic_pizza,"South Indian, North Indian","60 min Rs200 minimum"));
-        mHotelListArray.add(new Hotel_Object("12 Tables",R.drawable.ic_pizza,"South Indian, North Indian","60 min Rs200 minimum"));
-        mHotelListArray.add(new Hotel_Object("SandP",R.drawable.ic_pizza,"South Indian, North Indian","60 min Rs200 minimum"));
+        mHotelListArray.add(new Hotel_Object("Pizzeria",R.drawable.ic_food1,"South Indian, North Indian","60 min Rs200 minimum"));
+        mHotelListArray.add(new Hotel_Object("Mac n Cheese",R.drawable.ic_food2,"South Indian, North Indian","60 min Rs200 minimum"));
+        mHotelListArray.add(new Hotel_Object("12 Tables",R.drawable.ic_food3,"South Indian, North Indian","60 min Rs200 minimum"));
+        mHotelListArray.add(new Hotel_Object("SandP",R.drawable.ic_food4,"South Indian, North Indian","60 min Rs200 minimum"));
 
-        mHotelListView=findViewById(R.id.restaurant_name_listView);
+        mHotelListView=findViewById(R.id.listView);
         HotelListViewAdapter hotelAdapter=new HotelListViewAdapter(getApplicationContext(),mHotelListArray);
         mHotelListView.setAdapter(hotelAdapter);
 
         mAuth=FirebaseAuth.getInstance();
-        mUser_name=(TextView)findViewById(R.id.name_textview);
+        mUser_name=(TextView)findViewById(R.id.restaurant_listView);
         mAuthStateListener=new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {

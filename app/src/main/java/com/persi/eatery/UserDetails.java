@@ -10,13 +10,19 @@ public class UserDetails {
     private String hostel;
     private String room;
     private String phone_no;
+    private String uId;
 
-    public UserDetails(String name, String email, String hostel, String room, String phone_no) {
+    public UserDetails(String name, String email, String hostel, String room, String phone_no,String uId) {
         this.name = name;
         this.email = email;
         this.hostel = hostel;
         this.room = room;
         this.phone_no = phone_no;
+        this.uId=uId;
+    }
+
+    public String getuId() {
+        return uId;
     }
 
     public UserDetails() {

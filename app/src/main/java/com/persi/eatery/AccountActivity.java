@@ -1,5 +1,6 @@
 package com.persi.eatery;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,16 +12,18 @@ public class AccountActivity extends AppCompatActivity {
     private TextView mUser_name;
     private String mUsername;
 
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+         overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
         setContentView(R.layout.activity_account);
         Log.d("Eatery","account");
         Bundle extras = getIntent().getExtras();
         if(extras !=null) {
             Log.d("Eatery","wtfff");
             mUsername = extras.getString("USER_NAME");
-            mUser_name=findViewById(R.id.name_textview);
+            mUser_name=findViewById(R.id.restaurant_listView);
             mUser_name.setText(mUsername);
         }
     }

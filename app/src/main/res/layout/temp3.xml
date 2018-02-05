@@ -34,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@+id/hotel_name" />
 
     <TextView
-        android:id="@+id/name_textview"
+        android:id="@+id/restaurant_listView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -62,10 +62,10 @@
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="#FF27AE60"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/name_textview"
+        app:layout_constraintBottom_toBottomOf="@+id/restaurant_listView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toEndOf="@+id/name_textview"
+        app:layout_constraintStart_toEndOf="@+id/restaurant_listView"
         app:layout_constraintTop_toBottomOf="@+id/hotel_name"
         tools:text="@string/sign_out" />
 
@@ -108,7 +108,7 @@
         android:tint="#E6E2E0"
         app:layout_constraintEnd_toStartOf="@+id/cart_button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_textview"
+        app:layout_constraintTop_toBottomOf="@+id/restaurant_listView"
         app:srcCompat="@drawable/ic_burger" />
 
 
@@ -206,7 +206,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:background="#FF27AE60"
-                android:onClick="signUp"
                 android:text="@string/sign_up"
                 android:textColor="@android:color/background_light"
                 android:textSize="20sp"
