@@ -10,6 +10,8 @@ import android.widget.TextView;
 public class ShoppingCart extends AppCompatActivity {
     private TextView mUser_name;
     private String mUsername;
+    private String mPreviousActivity;
+    private  Intent mIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,7 @@ public class ShoppingCart extends AppCompatActivity {
         if(extras !=null) {
             Log.d("Eatery","wtfff");
             mUsername = extras.getString("USER_NAME");
+            mPreviousActivity=extras.getString("Acitivity");
             mUser_name=findViewById(R.id.restaurant_listView);
             mUser_name.setText(mUsername);
         }
@@ -37,5 +40,22 @@ public class ShoppingCart extends AppCompatActivity {
         intent.putExtra("USER_NAME", mUsername);
         finish();
         startActivity(intent);
+    }
+    @Override
+    public void onBackPressed(){
+        switch (mPreviousActivity) {
+            case "RestaurantActivity.class":
+                mIntent = new Intent(this,RestaurantActivity.class);
+                break;
+            case "AccountActivity.class":
+                mIntent = new Intent(this,AccountActivity.class);
+                break;
+        }
+
+        mIntent.putExtra("USER_NAME", mUsername);
+        mIntent.putExtra("Acitivity","ShoppingCart.class");
+        finish();
+        startActivity(mIntent);
+
     }
 }

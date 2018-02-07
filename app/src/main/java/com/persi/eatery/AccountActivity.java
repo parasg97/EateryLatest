@@ -27,6 +27,8 @@ public class AccountActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
     private String mUid;
+    private String mPreviousActivity;
+    private  Intent mIntent;
 
     @SuppressLint("ResourceType")
     @Override
@@ -39,6 +41,7 @@ public class AccountActivity extends AppCompatActivity {
         if(extras !=null) {
             Log.d("Eatery","wtfff");
             mUsername = extras.getString("USER_NAME");
+            mPreviousActivity=extras.getString("Acitivity");
             mUser_name=findViewById(R.id.restaurant_listView);
             mUser_name.setText(mUsername);
         }
@@ -48,16 +51,18 @@ public class AccountActivity extends AppCompatActivity {
 
     }
     public void goToHotelMenu(View v) {
-        Intent intent = new Intent(this,RestaurantActivity.class);
-        intent.putExtra("USER_NAME", mUsername);
+         mIntent = new Intent(this,RestaurantActivity.class);
+        mIntent.putExtra("USER_NAME", mUsername);
+        mIntent.putExtra("Acitivity","AccountActivity.class");
         finish();
-        startActivity(intent);
+        startActivity(mIntent);
     }
     public void goToCart(View v) {
-        Intent intent = new Intent(this,ShoppingCart.class);
-        intent.putExtra("USER_NAME", mUsername);
+        mIntent = new Intent(this,ShoppingCart.class);
+        mIntent.putExtra("USER_NAME", mUsername);
+        mIntent.putExtra("Acitivity","AccountActivity.class");
         finish();
-        startActivity(intent);
+        startActivity(mIntent);
     }
     public void saveChanges(View v) {
         mnewHostel=mHostelView.getText().toString();
@@ -82,9 +87,31 @@ public class AccountActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Intent intent = new Intent(this,RestaurantActivity.class);
+        mIntent = new Intent(this,RestaurantActivity.class);
+        mIntent.putExtra("USER_NAME", mUsername);
+        mIntent.putExtra("Acitivity","AccountActivity.class");
+        finish();
+        startActivity(mIntent);
+    }
+    @Override
+    public void onBackPressed(){
+        switch (mPreviousActivity) {
+            case "RestaurantActivity.class":
+                 mIntent = new Intent(this,RestaurantActivity.class);
+                break;
+            case "ShoppingCart.class":
+                 mIntent = new Intent(this,ShoppingCart.class);
+                break;
+        }
+
+        mIntent.putExtra("USER_NAME", mUsername);
+        mIntent.putExtra("Acitivity","AccountActivity.class");
+        finish();
+        startActivity(mIntent);
+        /*Intent intent = new Intent(this,LastActivity.class);
         intent.putExtra("USER_NAME", mUsername);
         finish();
-        startActivity(intent);
+        startActivity(intent);*/
+
     }
 }

@@ -72,6 +72,7 @@
         android:layout_height="0dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:background="@android:color/white"
         android:onClick="goToCart"
         app:layout_constraintBottom_toBottomOf="@+id/hotel_button"
@@ -85,6 +86,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
         android:background="@android:color/white"
         app:layout_constraintBottom_toBottomOf="@+id/hotel_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -98,6 +100,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:background="@android:color/white"
         android:fadingEdge="none"
         android:onClick="goToHotelMenu"
@@ -106,6 +109,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/space4"
         app:srcCompat="@drawable/ic_burger" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="#E6E2E0"
+        app:layout_constraintTop_toBottomOf="@id/cart_button" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E6E2E0"
+        app:layout_constraintTop_toBottomOf="@id/restaurant_listView" />
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
