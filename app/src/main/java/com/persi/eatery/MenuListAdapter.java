@@ -119,8 +119,8 @@ public class MenuListAdapter extends BaseAdapter{
                 holder.mVegnonVeg.setImageResource(getItem(position).getVegnonVeg());
                 holder.mFoodPrice.setText(getItem(position).getPrice().toString());
                 holder.mFooddetail.setText(getItem(position).getFoodDetail());
-                holder.mAddButton.setImageResource(R.drawable.ic_plus);
-                holder.mDeleteButton.setImageResource(R.drawable.ic_minus);
+                holder.mAddButton.setImageResource(R.drawable.ic_add2);
+                holder.mDeleteButton.setImageResource(R.drawable.ic_minus2);
                 try {
                     holder.mQuantity.setText(String.valueOf(mcart.getQuantity(getItem(position))));
                 }catch (ProductNotFoundException e){

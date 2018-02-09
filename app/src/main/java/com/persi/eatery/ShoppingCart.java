@@ -7,11 +7,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.android.tonyvu.sc.exception.ProductNotFoundException;
+import com.android.tonyvu.sc.model.Cart;
+import com.android.tonyvu.sc.util.CartHelper;
+
 public class ShoppingCart extends AppCompatActivity {
     private TextView mUser_name;
     private String mUsername;
     private String mPreviousActivity;
     private  Intent mIntent;
+    private Cart mCart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +31,12 @@ public class ShoppingCart extends AppCompatActivity {
             mPreviousActivity=extras.getString("Acitivity");
             mUser_name=findViewById(R.id.restaurant_listView);
             mUser_name.setText(mUsername);
+        }
+        mCart = CartHelper.getCart();
+        try{
+            Log.d("Eatery",mCart.toString());
+        }catch (ProductNotFoundException e){
+            e.toString();
         }
 
     }

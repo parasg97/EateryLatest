@@ -68,14 +68,14 @@
     <ImageView
         android:id="@+id/add_to_cart_button"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
-        android:onClick="addItemToCart"
-        app:layout_constraintBottom_toBottomOf="@+id/food_detail"
+        android:layout_marginTop="8dp"
+        app:srcCompat="@drawable/ic_add2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/food_quantity"
-        app:layout_constraintTop_toTopOf="@+id/food_detail"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_plus" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/remove_from_cart_button"
@@ -86,7 +86,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/add_to_cart_button"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_minus" />
+        app:srcCompat="@drawable/ic_minus2" />
 
     <ImageView
         android:id="@+id/veg_nonveg"
