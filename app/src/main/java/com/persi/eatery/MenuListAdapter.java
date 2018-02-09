@@ -184,9 +184,7 @@ public class MenuListAdapter extends BaseAdapter{
         TextView mFoodSeparator;
     }
 
-    public void addItemToCart(View v) {
-        Log.d("Eatery","madsfkjr");
-    }
+
 
 }
 
