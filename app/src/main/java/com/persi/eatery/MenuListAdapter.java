@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.tonyvu.sc.exception.ProductNotFoundException;
 import com.android.tonyvu.sc.model.Cart;
 import com.android.tonyvu.sc.util.CartHelper;
 
@@ -147,7 +148,13 @@ public class MenuListAdapter extends BaseAdapter{
                 holder.mFooddetail.setText(getItem(position).getFoodDetail());
                 holder.mAddButton.setImageResource(R.drawable.ic_plus);
                 holder.mDeleteButton.setImageResource(R.drawable.ic_minus);
-                holder.mQuantity.setText(String.valueOf(mcart.getQuantity(getItem(position))));
+                try {
+                    holder.mQuantity.setText(String.valueOf(mcart.getQuantity(getItem(position))));
+                }catch (ProductNotFoundException e){
+                    holder.mQuantity.setText("0");
+                    Log.d("Eatery",e.toString());
+                }
+
                 holder.mAddButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
