@@ -31,14 +31,7 @@ public class MenuListAdapter extends BaseAdapter{
     private LayoutInflater mInflater;
     private TreeSet mSeparatorsSet = new TreeSet();
     private Context mContext;
-   // int mQuantity;
-    TextView mQuantityTextView;
-    //ViewHolder holder = null;
-    //ViewHolderSep holderSep=null;
-    /*private TextView mFoodname;
-    private ImageView mVegnonVeg;
-    private TextView mFooddetail;
-    private TextView mFoodPrice;*/
+
 
     public MenuListAdapter(ArrayList data, Context context,TreeSet separatorsSet) {
         mData = data;
@@ -48,18 +41,6 @@ public class MenuListAdapter extends BaseAdapter{
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
     }
-
-    /*public void addItem(final Food_Item item) {
-        mData.add(item);
-        notifyDataSetChanged();
-    }
-
-    public void addSeparatorItem(final String item) {
-        mData.add(item);
-        // save separator position
-        mSeparatorsSet.add(mData.size() - 1);
-        notifyDataSetChanged();
-    }*/
 
     @Override
     public int getItemViewType(int position) {
@@ -98,12 +79,10 @@ public class MenuListAdapter extends BaseAdapter{
         int type = getItemViewType(position);
         System.out.println("getView " + position + " " + convertView + " type = " + type);
         if (convertView == null) {
-            //holder = new ViewHolder();
             switch (type) {
                 case TYPE_ITEM:
                     holder = new ViewHolder();
                     convertView = mInflater.inflate(R.layout.menu_list_view_row, null);
-                    //holder.textView = (TextView)convertView.findViewById(R.id.text);
                     holder.mFoodname=convertView.findViewById(R.id.food_name);
                     holder.mFooddetail=convertView.findViewById(R.id.food_detail);
                     holder.mFoodPrice=convertView.findViewById(R.id.food_price);
@@ -111,22 +90,16 @@ public class MenuListAdapter extends BaseAdapter{
                     holder.mAddButton=convertView.findViewById(R.id.add_to_cart_button);
                     holder.mDeleteButton=convertView.findViewById(R.id.remove_from_cart_button);
                     holder.mQuantity=convertView.findViewById(R.id.food_quantity);
-
-                    /*holder.mFoodname.setText(getItem(position).getName());
-                    holder.mVegnonVeg.setImageResource(getItem(position).getVegnonVeg());
-                    holder.mFoodPrice.setText(getItem(position).getPrice().toString());
-                    holder.mFooddetail.setText(getItem(position).getFoodDetail());*/
                     convertView.setTag(holder);
                     break;
                 case TYPE_SEPARATOR:
                     holderSep=new ViewHolderSep();
                     convertView = mInflater.inflate(R.layout.food_category, null);
                     holderSep.mFoodSeparator = convertView.findViewById(R.id.food_category);
-                    //holderSep.mFoodSeparator.setText(getItemSep(position));
                     convertView.setTag(holderSep);
                     break;
             }
-            //convertView.setTag(holder);
+
         } else {
             switch (type){
                 case TYPE_ITEM:
@@ -139,7 +112,7 @@ public class MenuListAdapter extends BaseAdapter{
             }
 
         }
-       // holder.textView.setText(mData.get(position));
+
         switch (type){
             case TYPE_ITEM:
                 holder.mFoodname.setText(getItem(position).getName());
@@ -160,7 +133,6 @@ public class MenuListAdapter extends BaseAdapter{
                     public void onClick(View v) {
                         mcart.add(getItem(position),1);
                         Log.d("Eatery",getItem(position).getName()+":"+String.valueOf(mcart.getQuantity(getItem(position))));
-                        //holder.mQuantity.setText(mcart.getQuantity(getItem(position)));
                         View parent=(View)v.getParent();
                         TextView textView=(TextView) parent.findViewById(R.id.food_quantity);
                         if(textView==null)
@@ -172,7 +144,19 @@ public class MenuListAdapter extends BaseAdapter{
                 holder.mDeleteButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        mcart.remove(getItem(position),1);
+                        try{
+                            mcart.remove(getItem(position),1);
+                        }catch (ProductNotFoundException e){
+                            Log.d("Eatery",e.toString());
+                        }
+                        View parent=(View)v.getParent();
+                        TextView textView=(TextView) parent.findViewById(R.id.food_quantity);
+                        try{
+                            textView.setText(String.valueOf(mcart.getQuantity(getItem(position))));
+                        }catch (ProductNotFoundException e){
+                            textView.setText("0");
+                        }
+
                     }
                 });
 
