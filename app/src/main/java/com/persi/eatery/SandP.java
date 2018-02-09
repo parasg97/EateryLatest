@@ -2,7 +2,9 @@ package com.persi.eatery;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.ListView;
 
 import java.math.BigDecimal;
@@ -23,7 +25,7 @@ public class SandP extends AppCompatActivity {
         mListView=findViewById(R.id.listView_sand);
         menuListAdapter=new MenuListAdapter(mData,getApplicationContext(),mSeparatorsSet);
         addSeparatorItem("Burerg");
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
+        addItem(new Food_Item("food1","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(50.0)));
         addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
         addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
         addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
@@ -33,7 +35,7 @@ public class SandP extends AppCompatActivity {
         addSeparatorItem("Burerg2");
         addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
         addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
+        addItem(new Food_Item("food3","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(10.0)));
         addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
         addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
         addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
@@ -55,8 +57,8 @@ public class SandP extends AppCompatActivity {
         addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
         addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
 
-
         mListView.setAdapter(menuListAdapter);
+
 
     }
 

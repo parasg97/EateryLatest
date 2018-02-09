@@ -1,12 +1,17 @@
 package com.persi.eatery;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.android.tonyvu.sc.model.Cart;
+import com.android.tonyvu.sc.util.CartHelper;
 
 import java.util.ArrayList;
 import java.util.TreeSet;
@@ -20,11 +25,15 @@ public class MenuListAdapter extends BaseAdapter{
     private static final int TYPE_ITEM = 0;
     private static final int TYPE_SEPARATOR = 1;
     private static final int TYPE_MAX_COUNT = TYPE_SEPARATOR + 1;
-
+    private Cart mcart;
     private ArrayList mData = new ArrayList();
     private LayoutInflater mInflater;
     private TreeSet mSeparatorsSet = new TreeSet();
     private Context mContext;
+   // int mQuantity;
+    TextView mQuantityTextView;
+    //ViewHolder holder = null;
+    //ViewHolderSep holderSep=null;
     /*private TextView mFoodname;
     private ImageView mVegnonVeg;
     private TextView mFooddetail;
@@ -34,6 +43,7 @@ public class MenuListAdapter extends BaseAdapter{
         mData = data;
         mContext = context;
         mSeparatorsSet=separatorsSet;
+        mcart = CartHelper.getCart();
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
     }
@@ -80,8 +90,8 @@ public class MenuListAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder = null;
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        ViewHolder holder= null;
         ViewHolderSep holderSep=null;
 
         int type = getItemViewType(position);
@@ -137,13 +147,35 @@ public class MenuListAdapter extends BaseAdapter{
                 holder.mFooddetail.setText(getItem(position).getFoodDetail());
                 holder.mAddButton.setImageResource(R.drawable.ic_plus);
                 holder.mDeleteButton.setImageResource(R.drawable.ic_minus);
-                holder.mQuantity.setText("0");
+                holder.mQuantity.setText(String.valueOf(mcart.getQuantity(getItem(position))));
+                holder.mAddButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mcart.add(getItem(position),1);
+                        Log.d("Eatery",getItem(position).getName()+":"+String.valueOf(mcart.getQuantity(getItem(position))));
+                        //holder.mQuantity.setText(mcart.getQuantity(getItem(position)));
+                        View parent=(View)v.getParent();
+                        TextView textView=(TextView) parent.findViewById(R.id.food_quantity);
+                        if(textView==null)
+                            Log.d("Eatery","damn");
+                        else
+                        textView.setText(String.valueOf(mcart.getQuantity(getItem(position))));
+                    }
+                });
+                holder.mDeleteButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mcart.remove(getItem(position),1);
+                    }
+                });
+
                 break;
             case TYPE_SEPARATOR:
                 holderSep.mFoodSeparator.setText(getItemSep(position));
                 break;
 
         }
+
         return convertView;
     }
 
@@ -156,8 +188,13 @@ public class MenuListAdapter extends BaseAdapter{
          ImageView mDeleteButton;
          TextView mQuantity;
     }
+
     static class ViewHolderSep{
         TextView mFoodSeparator;
+    }
+
+    public void addItemToCart(View v) {
+        Log.d("Eatery","madsfkjr");
     }
 
 }

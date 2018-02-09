@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/white"
+    tools:context="com.persi.eatery.MenuListAdapter"
     android:id="@+id/linearLayout2">
 
 
@@ -18,7 +19,7 @@
         android:textAlignment="viewStart"
         android:textColor="@android:color/background_dark"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/veg_nonveg"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_conversion_absoluteHeight="27dp"
         tools:layout_conversion_absoluteWidth="387dp"
@@ -69,6 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginEnd="8dp"
+        android:onClick="addItemToCart"
         app:layout_constraintBottom_toBottomOf="@+id/food_detail"
         app:layout_constraintEnd_toStartOf="@+id/food_quantity"
         app:layout_constraintTop_toTopOf="@+id/food_detail"
@@ -92,7 +94,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/food_name"
-        app:layout_constraintStart_toEndOf="@+id/food_name"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/food_name"
         app:srcCompat="@drawable/ic_veg" />
 
