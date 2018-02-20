@@ -88,17 +88,6 @@ public class ShoppingCart extends AppCompatActivity {
 
         SendMail sm = new SendMail(this, "parasgupta24feb@gmail.com","New order", mCart.toString());
         sm.execute();
-        if(SendMail.done==1){
-            Log.d("Eatery","wtf");
-            SendMail.done=0;
-            Intent intent = new Intent(this,ThankYou.class);
-            //intent.putExtra("USER_NAME", mUsername);
-            startActivity(intent);
-            finish();
-        }
-        else {
-            Log.d("Eatery","wtfinelse");
-        }
     }
 
     @Override

@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="C:\Users\Shrey\AndroidStudioProjects\Eatery\library\src\main\assets"/><source path="C:\Users\Shrey\AndroidStudioProjects\Eatery\library\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="C:\Users\Shrey\AndroidStudioProjects\Eatery\library\src\debug\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="C:\Projects\Eatery\library\src\main\assets"/><source path="C:\Projects\Eatery\library\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="C:\Projects\Eatery\library\src\debug\assets"/></dataSet></merger>
