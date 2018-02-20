@@ -1,12 +1,16 @@
 package com.persi.eatery;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.tonyvu.sc.exception.ProductNotFoundException;
 import com.android.tonyvu.sc.model.Cart;
@@ -84,10 +88,33 @@ public class ShoppingCart extends AppCompatActivity {
         finish();
         startActivity(intent);
     }
+    private Boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting();
+    }
+
+    public Boolean isOnline() {
+        try {
+            Process p1 = java.lang.Runtime.getRuntime().exec("ping -c 1 www.google.com");
+            int returnVal = p1.waitFor();
+            boolean reachable = (returnVal==0);
+            return reachable;
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public void placeOrder(View v) {
 
         SendMail sm = new SendMail(this, "parasgupta24feb@gmail.com","New order", mCart.toString());
+        if(isNetworkAvailable())
         sm.execute();
+        else
+            Toast.makeText(this,"Internet is not available",Toast.LENGTH_SHORT).show();
     }
 
     @Override

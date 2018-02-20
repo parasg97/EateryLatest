@@ -206,6 +206,16 @@
             android:textStyle="bold"
             tools:text="Save changes" />
 
+        <TextView
+            android:id="@+id/changePassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Change Password"
+            android:textAlignment="center"
+            android:textColor="#FF27AE60"
+            tools:text="Change Password" />
+
 
     </LinearLayout>
 
