@@ -3,8 +3,8 @@
     package="com.android.tonyvu.sc.test" >
 
     <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="23" />
+        android:minSdkVersion="16"
+        android:targetSdkVersion="27" />
 
     <instrumentation
         android:name="android.test.InstrumentationTestRunner"

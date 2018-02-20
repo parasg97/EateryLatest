@@ -12,9 +12,13 @@ import android.widget.TextView;
 
 import com.android.tonyvu.sc.exception.ProductNotFoundException;
 import com.android.tonyvu.sc.model.Cart;
+import com.android.tonyvu.sc.model.Saleable;
 import com.android.tonyvu.sc.util.CartHelper;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 import java.util.TreeSet;
 
 /**
@@ -38,6 +42,8 @@ public class MenuListAdapter extends BaseAdapter{
         mContext = context;
         mSeparatorsSet=separatorsSet;
         mcart = CartHelper.getCart();
+        mcart.getProducts();
+        //Log.d("Eatery","ConstructorMenuListAdapter\n"+mcart.toString());
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
     }
@@ -121,18 +127,28 @@ public class MenuListAdapter extends BaseAdapter{
                 holder.mFooddetail.setText(getItem(position).getFoodDetail());
                 holder.mAddButton.setImageResource(R.drawable.ic_add2);
                 holder.mDeleteButton.setImageResource(R.drawable.ic_minus2);
-                try {
+                try {//Log.d("Eatery","try"+String.valueOf(mcart.getQuantity(getItem(position))));
                     holder.mQuantity.setText(String.valueOf(mcart.getQuantity(getItem(position))));
                 }catch (ProductNotFoundException e){
                     holder.mQuantity.setText("0");
-                    Log.d("Eatery",e.toString());
+                    //Log.d("Eatery","mQuantitySandP"+e.toString());
                 }
 
                 holder.mAddButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        mcart.add(getItem(position),1);
-                        Log.d("Eatery",getItem(position).getName()+":"+String.valueOf(mcart.getQuantity(getItem(position))));
+                        try{
+                            mcart.update(getItem(position),mcart.getQuantity(getItem(position))+1);
+
+                            //Log.d("Eatery","addButtonupdate");
+                            //Log.d("Eatery",getItem(position).toString());
+
+                        }catch (ProductNotFoundException e){
+                            mcart.add(getItem(position),1);
+                            //Log.d("Eatery","addButtonupadd\n");
+                            //Log.d("Eatery",getItem(position).toString());
+                        }
+                        //Log.d("Eatery","addButtonCartinfo"+mcart.toString());
                         View parent=(View)v.getParent();
                         TextView textView=(TextView) parent.findViewById(R.id.food_quantity);
                         if(textView==null)
@@ -146,8 +162,9 @@ public class MenuListAdapter extends BaseAdapter{
                     public void onClick(View v) {
                         try{
                             mcart.remove(getItem(position),1);
+                            //Log.d("Eatery","removeButtonCartinfo"+mcart.toString());
                         }catch (ProductNotFoundException e){
-                            Log.d("Eatery",e.toString());
+                            ////Log.d("Eatery",e.toString());
                         }
                         View parent=(View)v.getParent();
                         TextView textView=(TextView) parent.findViewById(R.id.food_quantity);

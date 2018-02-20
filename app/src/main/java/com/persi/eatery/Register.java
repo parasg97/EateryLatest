@@ -184,10 +184,10 @@ public class Register extends AppCompatActivity {
 
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d("Eatery", "createUser onComplete: " + task.isSuccessful());
+                        //Log.d("Eatery", "createFirebaseuserReigisterClasscreateUser onComplete: " + task.isSuccessful());
 
                         if(!task.isSuccessful()){
-                            Log.d("Eatery", "user creation failed");
+                           // Log.d("Eatery", "createFirebaseuserReigisterClassuser creation failed");
                             showErrorDialog("Registration attempt failed");
                         } else {
                             //saveDisplayName();
@@ -196,7 +196,7 @@ public class Register extends AppCompatActivity {
                             if (user != null) {
                                 uId=user.getUid();
                             } else {
-                                Log.d("Eatery","no user signed in");
+                                //Log.d("Eatery","createFirebaseuserReigisterClassno user signed in");
                             }
                             UserDetails details=new UserDetails(name,email,hostel,room,phone_no,uId);
                             mUserDetails= FirebaseDatabase.getInstance().getReference();

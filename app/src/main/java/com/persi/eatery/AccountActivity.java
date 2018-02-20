@@ -36,10 +36,10 @@ public class AccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
          overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
         setContentView(R.layout.activity_account);
-        Log.d("Eatery","account");
+        //Log.d("Eatery","onCreateAccountActivityaccount");
         Bundle extras = getIntent().getExtras();
         if(extras !=null) {
-            Log.d("Eatery","wtfff");
+            //Log.d("Eatery","onCreateAccountActivitywtfff");
             mUsername = extras.getString("USER_NAME");
             mPreviousActivity=extras.getString("Acitivity");
             mUser_name=findViewById(R.id.restaurant_listView);

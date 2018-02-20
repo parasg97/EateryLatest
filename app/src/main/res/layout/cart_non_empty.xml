@@ -3,62 +3,133 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="com.persi.eatery.ShoppingCart"
+    >
 
     <TextView
-        android:id="@+id/cart"
-        android:layout_width="wrap_content"
+        android:id="@+id/hotel_name"
+        android:layout_width="411dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Cart"
+        android:text="@string/deliverin_food_to"
         android:textColor="@android:color/background_dark"
-        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Cart" />
+        tools:text="@string/deliverin_food_to" />
+
 
     <TextView
-        android:id="@+id/goTomenu"
+        android:id="@+id/restaurant_listView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/customer_name"
+        android:textColor="@android:color/background_dark"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hotel_name" />
+
+    <TextView
+        android:id="@+id/change_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Go to cart"
+        android:layout_marginStart="8dp"
+        android:background="@android:color/white"
+        android:paddingRight="10dp"
+        android:text="@string/sign_out"
+        android:textAlignment="textEnd"
+        android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="#FF27AE60"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/cart"
+        app:layout_constraintBottom_toBottomOf="@+id/restaurant_listView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/cart"
-        tools:text="Go to Menu" />
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toEndOf="@+id/restaurant_listView"
+        app:layout_constraintTop_toBottomOf="@+id/hotel_name"
+        tools:text="@string/sign_out" />
+
 
     <Space
-        android:id="@+id/space"
+        android:id="@+id/space4"
         android:layout_width="0dp"
-        android:layout_height="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="3dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cart"
-        app:layout_constraintVertical_bias="0.0" />
-    <View
-        android:layout_width="match_parent"
-        android:id="@+id/border"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:background="#E6E2E0"
-        app:layout_constraintTop_toBottomOf="@id/space" />
+        app:layout_constraintTop_toBottomOf="@+id/restaurant_listView" />
 
-    <ListView
-        android:id="@+id/listView_cart"
+    <ImageButton
+        android:id="@+id/cart_button"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/hotel_button"
+        app:layout_constraintEnd_toStartOf="@+id/account_button"
+        app:layout_constraintStart_toEndOf="@+id/hotel_button"
+        app:layout_constraintTop_toBottomOf="@+id/space4"
+        app:srcCompat="@drawable/ic_cart_icon_dark" />
+
+    <ImageButton
+        android:id="@+id/account_button"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/white"
+        android:tint="#E6E2E0"
+        app:layout_constraintBottom_toBottomOf="@+id/hotel_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cart_button"
+        app:layout_constraintTop_toBottomOf="@+id/space4"
+        app:srcCompat="@drawable/ic_account" />
+
+
+    <ImageButton
+        android:id="@+id/hotel_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/white"
+        android:fadingEdge="none"
+        app:layout_constraintEnd_toStartOf="@+id/cart_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/space4"
+        app:srcCompat="@drawable/ic_burger" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="#E6E2E0"
+        app:layout_constraintTop_toBottomOf="@id/cart_button" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E6E2E0"
+        app:layout_constraintTop_toBottomOf="@id/restaurant_listView" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintBottom_toTopOf="@id/place_order"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/border"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/account_button" />
+
 
     <Button
         android:id="@+id/place_order"
@@ -67,8 +138,9 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:background="#FF27AE60"
+        android:onClick="placeOrder"
         android:text="Place order"
         android:textColor="@android:color/background_light"
         android:textSize="20sp"
@@ -76,7 +148,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/listView_cart"
+        app:layout_constraintTop_toBottomOf="@id/listView"
         tools:text="Place order" />
 
 </android.support.constraint.ConstraintLayout>

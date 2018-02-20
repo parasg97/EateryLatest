@@ -65,13 +65,13 @@ public class Login_Activity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                Log.d("Eatery", "signInWithEmail() onComplete: " + task.isSuccessful());
+                //Log.d("Eatery", "AttemptLogin,LoGinActivitysignInWithEmail() onComplete: " + task.isSuccessful());
 
                 if (!task.isSuccessful()) {
-                    Log.d("Eatery", "Problem signing in: " + task.getException());
+                    //Log.d("Eatery", "AttemptLogin,LoGinActivityProblem signing in: " + task.getException());
                     showErrorDialog("There was a problem signing in");
                 } else {
-                    Log.d("Eatery","startin new intent");
+                    //Log.d("Eatery","AttemptLogin,LoGinActivitystartin new intent");
                     Intent intent = new Intent(Login_Activity.this,RestaurantActivity.class);
                     finish();
                     startActivity(intent);

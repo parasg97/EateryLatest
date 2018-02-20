@@ -9,4 +9,6 @@ public interface Saleable {
     BigDecimal getPrice();
 
     String getName();
+
+
 }

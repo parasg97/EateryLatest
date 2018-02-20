@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
 
+import com.android.tonyvu.sc.model.Cart;
+import com.android.tonyvu.sc.util.CartHelper;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.TreeSet;
@@ -17,45 +20,33 @@ public class SandP extends AppCompatActivity {
     private TreeSet mSeparatorsSet = new TreeSet();
     private ListView mListView;
     private MenuListAdapter menuListAdapter;
-
+    private Cart mCart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sand_p);
+        mCart= CartHelper.getCart();
+        //mCart.
+        //LLog.d("Eatery",onCreateSandPmCart.toString());
         mListView=findViewById(R.id.listView_sand);
         menuListAdapter=new MenuListAdapter(mData,getApplicationContext(),mSeparatorsSet);
         addSeparatorItem("Burerg");
-        addItem(new Food_Item("food1","blah blah",R.drawable.ic_egg, BigDecimal.valueOf(50.0)));
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_non_veg2, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_egg, BigDecimal.valueOf(100.0)));
+        addItem(new Food_Item("a","blah blah",R.drawable.ic_egg, BigDecimal.valueOf(100.0)));
+        addItem(new Food_Item("b","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
+        addItem(new Food_Item("c","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
+        addItem(new Food_Item("d","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
+        addItem(new Food_Item("e","blah blah",R.drawable.ic_non_veg2, BigDecimal.valueOf(100.0)));
+        addItem(new Food_Item("f","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
+        addItem(new Food_Item("g","blah blah",R.drawable.ic_egg, BigDecimal.valueOf(100.0)));
         addSeparatorItem("Burerg2");
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_non_veg2, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("food3","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(10.0)));
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addSeparatorItem("Burerg3");
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addSeparatorItem("Burerg4");
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("Foodname","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
+        addItem(new Food_Item("h","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
+        addItem(new Food_Item("i","blah blah",R.drawable.ic_non_veg2, BigDecimal.valueOf(100.0)));
+        addItem(new Food_Item("j","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(10.0)));
+        addItem(new Food_Item("k","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
+        addItem(new Food_Item("l","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
+        addItem(new Food_Item("m","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
+        addItem(new Food_Item("n","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
+
 
         mListView.setAdapter(menuListAdapter);
 

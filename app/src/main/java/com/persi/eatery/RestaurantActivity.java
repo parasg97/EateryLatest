@@ -38,7 +38,7 @@ public class RestaurantActivity extends AppCompatActivity {
         setContentView(R.layout.activity_restaurant);
         Bundle extras = getIntent().getExtras();
         if(extras !=null) {
-            Log.d("Eatery","wtfff");
+            //Log.d("Eatery","onCreaterestaurentActivitywtfff");
             mPreviousActivity=extras.getString("Acitivity");
         }
 
@@ -86,7 +86,7 @@ public class RestaurantActivity extends AppCompatActivity {
                 //mUser_name.setText(user.getEmail().toString());
 
                 if(user!=null){
-                    Log.d("Eatery","you are still logged in");
+                    //Log.d("Eatery","onCreateRestaurentActivityyou are still logged in");
                     mUsername=user.getEmail().toString().substring(0,user.getEmail().toString().indexOf('@'));
                     mUser_name.setText(user.getEmail().toString().substring(0,user.getEmail().toString().indexOf('@')));
 
@@ -100,7 +100,7 @@ public class RestaurantActivity extends AppCompatActivity {
         };
     }
     public void changeLoginId(View v) {
-        Log.d("Eatery",mAuth.getCurrentUser().getUid());
+        //Log.d("Eatery",changeLoginIdRestaurentActivitymAuth.getCurrentUser().getUid());
         FirebaseAuth.getInstance().signOut();
         Intent intent = new Intent(this,Login_Activity.class);
         intent.putExtra("USER_NAME", mUsername);

@@ -11,7 +11,7 @@
 
     <TextView
         android:id="@+id/hotel_name"
-        android:layout_width="411dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -24,8 +24,8 @@
 
     <TextView
         android:id="@+id/restaurant_listView"
-        android:layout_width="206dp"
-        android:layout_height="48dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="@string/customer_name"
         android:textColor="@android:color/background_dark"
@@ -112,6 +112,7 @@
         app:srcCompat="@drawable/ic_burger" />
 
     <View
+        android:id="@+id/border_1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="8dp"
@@ -119,6 +120,7 @@
         app:layout_constraintTop_toBottomOf="@id/cart_button" />
 
     <View
+        android:id="@+id/border_2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#E6E2E0"
