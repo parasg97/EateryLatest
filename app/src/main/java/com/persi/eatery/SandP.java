@@ -1,5 +1,6 @@
 package com.persi.eatery;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -63,5 +64,12 @@ public class SandP extends AppCompatActivity {
         // save separator position
         mSeparatorsSet.add(mData.size() - 1);
         menuListAdapter.notifyDataSetChanged();
+    }
+
+    public void goToCart(View v) {
+        Intent intent = new Intent(this,ShoppingCart.class);
+        intent.putExtra("USER_NAME", "parasg1997");
+        finish();
+        startActivity(intent);
     }
 }

@@ -23,7 +23,6 @@ public class ShoppingCart extends AppCompatActivity {
     private String mUsername;
     private String mPreviousActivity;
     private ArrayList<Saleable> mData=new ArrayList<>();
-    private  Intent mIntent;
     private Cart mCart;
     private ListView mListView;
     private Map<Saleable, Integer> cartItemMap = new HashMap<Saleable, Integer>();
@@ -34,10 +33,34 @@ public class ShoppingCart extends AppCompatActivity {
         overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
         mCart = CartHelper.getCart();
         cartItemMap=mCart.getItemWithQuantity();
-        if(mCart.getProducts().size()==0)
+        try{if(mCart.getProducts().size()==0){
             setContentView(R.layout.activity_shopping_cart);
-        else
+        }
+        else {
             setContentView(R.layout.cart_non_empty);
+            for (final Map.Entry<Saleable, Integer> entry : cartItemMap.entrySet()) {
+                mData.add(new Saleable() {
+                    @Override
+                    public BigDecimal getPrice() {
+                        return entry.getKey().getPrice();
+                    }
+
+                    @Override
+                    public String getName() {
+                        return entry.getKey().getName();
+                    }
+                });
+
+            }
+
+            mListView=findViewById(R.id.listView);
+            CartListAdapter cartListAdapter=new CartListAdapter(getApplicationContext(),mData);
+            mListView.setAdapter(cartListAdapter);
+        }
+        }catch (Exception e){
+            Log.d("Eatery",e.toString());
+        }
+
         Bundle extras = getIntent().getExtras();
         if(extras !=null) {
             mUsername = extras.getString("USER_NAME");
@@ -45,25 +68,6 @@ public class ShoppingCart extends AppCompatActivity {
             mUser_name = findViewById(R.id.restaurant_listView);
             mUser_name.setText(mUsername);
         }
-
-        for (final Map.Entry<Saleable, Integer> entry : cartItemMap.entrySet()) {
-            mData.add(new Saleable() {
-                @Override
-                public BigDecimal getPrice() {
-                    return entry.getKey().getPrice();
-                }
-
-                @Override
-                public String getName() {
-                    return entry.getKey().getName();
-                }
-            });
-
-        }
-
-        mListView=findViewById(R.id.listView);
-        CartListAdapter cartListAdapter=new CartListAdapter(getApplicationContext(),mData);
-        mListView.setAdapter(cartListAdapter);
 
 
     }
@@ -83,6 +87,17 @@ public class ShoppingCart extends AppCompatActivity {
 
         SendMail sm = new SendMail(this, "parasgupta24feb@gmail.com","New order", mCart.toString());
         sm.execute();
+        if(SendMail.done){
+            Log.d("Eatery","wtf");
+            SendMail.done=false;
+            Intent intent = new Intent(this,ThankYou.class);
+            //intent.putExtra("USER_NAME", mUsername);
+            finish();
+            startActivity(intent);
+        }
+
+
+
     }
     @Override
     public void onBackPressed(){

@@ -20,13 +20,14 @@
         tools:text="SandP" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/go_to_cart_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:text="Go to cart"
         android:textColor="#FF27AE60"
         android:textSize="14sp"
+        android:onClick="goToCart"
         app:layout_constraintBottom_toBottomOf="@+id/pizzeria"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/pizzeria"
