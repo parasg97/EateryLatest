@@ -12,6 +12,7 @@ import com.android.tonyvu.sc.exception.ProductNotFoundException;
 import com.android.tonyvu.sc.model.Cart;
 import com.android.tonyvu.sc.model.Saleable;
 import com.android.tonyvu.sc.util.CartHelper;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -87,21 +88,31 @@ public class ShoppingCart extends AppCompatActivity {
 
         SendMail sm = new SendMail(this, "parasgupta24feb@gmail.com","New order", mCart.toString());
         sm.execute();
-        if(SendMail.done){
+        if(SendMail.done==1){
             Log.d("Eatery","wtf");
-            SendMail.done=false;
+            SendMail.done=0;
             Intent intent = new Intent(this,ThankYou.class);
             //intent.putExtra("USER_NAME", mUsername);
-            finish();
             startActivity(intent);
+            finish();
         }
-
-
-
+        else {
+            Log.d("Eatery","wtfinelse");
+        }
     }
+
     @Override
     public void onBackPressed(){
        Log.d("Eatery","back_pressed");
 
+    }
+
+    public void changeLoginId(View v) {
+        //Log.d("Eatery",changeLoginIdRestaurentActivitymAuth.getCurrentUser().getUid());
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(this,Login_Activity.class);
+        intent.putExtra("USER_NAME", mUsername);
+        finish();
+        startActivity(intent);
     }
 }

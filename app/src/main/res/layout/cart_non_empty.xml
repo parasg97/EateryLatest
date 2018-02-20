@@ -46,6 +46,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="#FF27AE60"
         android:textSize="14sp"
+        android:onClick="changeLoginId"
         app:layout_constraintBottom_toBottomOf="@+id/restaurant_listView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
@@ -77,7 +78,7 @@
         app:layout_constraintEnd_toStartOf="@+id/account_button"
         app:layout_constraintStart_toEndOf="@+id/hotel_button"
         app:layout_constraintTop_toBottomOf="@+id/space4"
-        app:srcCompat="@drawable/ic_cart_icon_dark" />
+        app:srcCompat="@drawable/ic_cart_icon" />
 
     <ImageButton
         android:id="@+id/account_button"
@@ -87,6 +88,7 @@
         android:layout_marginTop="8dp"
         android:background="@android:color/white"
         android:tint="#E6E2E0"
+        android:onClick="goToAccountSetting"
         app:layout_constraintBottom_toBottomOf="@+id/hotel_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cart_button"
@@ -102,6 +104,8 @@
         android:layout_marginTop="8dp"
         android:background="@android:color/white"
         android:fadingEdge="none"
+        android:tint="#E6E2E0"
+        android:onClick="goToHotelMenu"
         app:layout_constraintEnd_toStartOf="@+id/cart_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/space4"

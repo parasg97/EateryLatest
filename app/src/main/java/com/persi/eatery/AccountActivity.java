@@ -112,6 +112,14 @@ public class AccountActivity extends AppCompatActivity {
         intent.putExtra("USER_NAME", mUsername);
         finish();
         startActivity(intent);*/
+    }
 
+    public void changeLoginId(View v) {
+        //Log.d("Eatery",changeLoginIdRestaurentActivitymAuth.getCurrentUser().getUid());
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(this,Login_Activity.class);
+        intent.putExtra("USER_NAME", mUsername);
+        finish();
+        startActivity(intent);
     }
 }

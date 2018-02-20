@@ -7,6 +7,7 @@ package com.persi.eatery;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 import java.util.Properties;
@@ -32,7 +33,7 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
     private String email;
     private String subject;
     private String message;
-    public static boolean done;
+    public static int done;
 
     //Progressdialog to show while sending email
     private ProgressDialog progressDialog;
@@ -59,15 +60,13 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
         //Dismissing the progress dialog
         progressDialog.dismiss();
         //Showing a success message
-        done=true;
+        done=1;
         Toast.makeText(context,"Message Sent",Toast.LENGTH_LONG).show();
-
-
-
     }
 
     @Override
     protected Void doInBackground(Void... params) {
+
         //Creating properties
         Properties props = new Properties();
 
@@ -107,6 +106,7 @@ public class SendMail extends AsyncTask<Void,Void,Void> {
         } catch (MessagingException e) {
             e.printStackTrace();
         }
+        done=1;
         return null;
     }
 }

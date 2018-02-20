@@ -24,8 +24,8 @@
 
     <TextView
         android:id="@+id/restaurant_listView"
-        android:layout_width="206dp"
-        android:layout_height="48dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="@string/customer_name"
         android:textColor="@android:color/background_dark"
@@ -47,6 +47,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="#FF27AE60"
         android:textSize="14sp"
+        android:onClick="changeLoginId"
         app:layout_constraintBottom_toBottomOf="@+id/restaurant_listView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
