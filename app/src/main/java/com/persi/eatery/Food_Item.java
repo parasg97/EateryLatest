@@ -12,15 +12,16 @@ import java.math.BigDecimal;
 
 public class Food_Item implements Saleable{
 
-    private String mFoodname, mFoodDetail;
+    private String mFoodname, mFoodDetail, mHotelName;
     private int mVegnonVeg;
     private BigDecimal mPrice;
 
-    public Food_Item(String foodname, String foodDetail, int vegnonVeg, BigDecimal price) {
+    public Food_Item(String foodname, String foodDetail, int vegnonVeg, BigDecimal price, String hotelName) {
         mFoodname = foodname;
         mFoodDetail = foodDetail;
         mVegnonVeg = vegnonVeg;
         this.mPrice = price;
+        mHotelName = hotelName;
     }
 
 
@@ -36,6 +37,10 @@ public class Food_Item implements Saleable{
     public BigDecimal getPrice() {
         return mPrice;
     }
+
+    @Override
+    public String getHotelName() { return mHotelName; }
+
 
     @Override
     public String getName() {

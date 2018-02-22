@@ -30,21 +30,21 @@ public class Pizzeria extends AppCompatActivity {
     mListView=findViewById(R.id.listView_pizzeria);
     menuListAdapter=new MenuListAdapter(mData,getApplicationContext(),mSeparatorsSet);
     addSeparatorItem("Burger");
-    addItem(new Food_Item("a1","blah blah",R.drawable.ic_egg, BigDecimal.valueOf(100.0)));
-    addItem(new Food_Item("b1","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-    addItem(new Food_Item("c1","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-    addItem(new Food_Item("d1","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-    addItem(new Food_Item("e1","blah blah",R.drawable.ic_non_veg2, BigDecimal.valueOf(100.0)));
-    addItem(new Food_Item("f1","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-    addItem(new Food_Item("g1","blah blah",R.drawable.ic_egg, BigDecimal.valueOf(100.0)));
+    addItem(new Food_Item("a1","blah blah",R.drawable.ic_egg, BigDecimal.valueOf(100.0),"Pizzeria"));
+    addItem(new Food_Item("b1","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0),"Pizzeria"));
+    addItem(new Food_Item("c1","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0),"Pizzeria"));
+    addItem(new Food_Item("d1","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0),"Pizzeria"));
+    addItem(new Food_Item("e1","blah blah",R.drawable.ic_non_veg2, BigDecimal.valueOf(100.0),"Pizzeria"));
+    addItem(new Food_Item("f1","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0),"Pizzeria"));
+    addItem(new Food_Item("g1","blah blah",R.drawable.ic_egg, BigDecimal.valueOf(100.0),"Pizzeria"));
     addSeparatorItem("Burger2");
-    addItem(new Food_Item("h1","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-    addItem(new Food_Item("i1","blah blah",R.drawable.ic_non_veg2, BigDecimal.valueOf(100.0)));
-    addItem(new Food_Item("j1","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(10.0)));
-    addItem(new Food_Item("k1","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-    addItem(new Food_Item("l1","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-    addItem(new Food_Item("m1","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-    addItem(new Food_Item("n1","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
+    addItem(new Food_Item("h1","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0),"Pizzeria"));
+    addItem(new Food_Item("i1","blah blah",R.drawable.ic_non_veg2, BigDecimal.valueOf(100.0),"Pizzeria"));
+    addItem(new Food_Item("j1","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(10.0),"Pizzeria"));
+    addItem(new Food_Item("k1","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0),"Pizzeria"));
+    addItem(new Food_Item("l1","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0),"Pizzeria"));
+    addItem(new Food_Item("m1","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0),"Pizzeria"));
+    addItem(new Food_Item("n1","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0),"Pizzeria"));
 
 
         mListView.setAdapter(menuListAdapter);

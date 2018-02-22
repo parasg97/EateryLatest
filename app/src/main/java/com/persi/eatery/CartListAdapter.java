@@ -33,6 +33,7 @@ public class CartListAdapter extends BaseAdapter {
             mLayoutInflater = (LayoutInflater.from(context));
             mCart = CartHelper.getCart();
             mData=new ArrayList<>(mCart.getProducts());
+
             //mCart.toString();
             //Log.d("Eatery","constructorCartListAdapter\n"+mCart.toString());
         }
@@ -106,6 +107,7 @@ public class CartListAdapter extends BaseAdapter {
                         mCart.remove(getItem(position),1);
                     }catch (ProductNotFoundException e){
                         //Log.d("Eatery",e.toString());
+                        //mData.remove(getItem(position));
                     }
                     View parent=(View)v.getParent();
                     TextView textView=(TextView) parent.findViewById(R.id.food_quantity);
@@ -113,6 +115,12 @@ public class CartListAdapter extends BaseAdapter {
                         textView.setText(String.valueOf(mCart.getQuantity(getItem(position))));
                     }catch (ProductNotFoundException e){
                         textView.setText("0");
+                    }
+                    try{
+                        mCart.getQuantity(getItem(position));
+                    }catch (ProductNotFoundException e){
+                        mData.remove(getItem(position));
+                        notifyDataSetChanged();
                     }
 
                 }

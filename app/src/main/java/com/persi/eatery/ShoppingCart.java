@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,7 @@ import com.android.tonyvu.sc.model.Cart;
 import com.android.tonyvu.sc.model.Saleable;
 import com.android.tonyvu.sc.util.CartHelper;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -30,6 +32,10 @@ public class ShoppingCart extends AppCompatActivity {
     private ArrayList<Saleable> mData=new ArrayList<>();
     private Cart mCart;
     private ListView mListView;
+    private String mUserEmail;
+    private FirebaseAuth mAuth;
+    private FirebaseUser mUser;
+
     private Map<Saleable, Integer> cartItemMap = new HashMap<Saleable, Integer>();
 
     @Override
@@ -44,7 +50,7 @@ public class ShoppingCart extends AppCompatActivity {
         else {
             setContentView(R.layout.cart_non_empty);
             for (final Map.Entry<Saleable, Integer> entry : cartItemMap.entrySet()) {
-                mData.add(new Saleable() {
+                mData.add(new Saleable(){
                     @Override
                     public BigDecimal getPrice() {
                         return entry.getKey().getPrice();
@@ -54,12 +60,15 @@ public class ShoppingCart extends AppCompatActivity {
                     public String getName() {
                         return entry.getKey().getName();
                     }
+
+                    @Override
+                    public String getHotelName(){return entry.getKey().getHotelName();}
                 });
 
             }
 
             mListView=findViewById(R.id.listView);
-            CartListAdapter cartListAdapter=new CartListAdapter(getApplicationContext(),mData);
+            CartListAdapter cartListAdapter=new CartListAdapter(ShoppingCart.this,mData);
             mListView.setAdapter(cartListAdapter);
         }
         }catch (Exception e){
@@ -73,6 +82,12 @@ public class ShoppingCart extends AppCompatActivity {
             mUser_name = findViewById(R.id.restaurant_listView);
             mUser_name.setText(mUsername);
         }
+
+        mAuth=FirebaseAuth.getInstance();
+        mUser=mAuth.getCurrentUser();
+        mUserEmail=mUser.getEmail().toString();
+
+
 
 
     }
@@ -110,9 +125,12 @@ public class ShoppingCart extends AppCompatActivity {
 
     public void placeOrder(View v) {
 
-        SendMail sm = new SendMail(this, "parasgupta24feb@gmail.com","New order", mCart.toString());
-        if(isNetworkAvailable())
-        sm.execute();
+        SendMail sm = new SendMail(this, mUserEmail,"New order", mCart.toString());
+        if(isNetworkAvailable()){
+            sm.execute();
+            Log.d("Eatery","mail:"+mUserEmail);
+        }
+
         else
             Toast.makeText(this,"Internet is not available",Toast.LENGTH_SHORT).show();
     }

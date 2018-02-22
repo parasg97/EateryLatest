@@ -1,5 +1,7 @@
 package com.persi.eatery;
 
+import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -9,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.tonyvu.sc.exception.ProductNotFoundException;
 import com.android.tonyvu.sc.model.Cart;
@@ -43,10 +46,12 @@ public class MenuListAdapter extends BaseAdapter{
         mSeparatorsSet=separatorsSet;
         mcart = CartHelper.getCart();
         mcart.getProducts();
+
         //Log.d("Eatery","ConstructorMenuListAdapter\n"+mcart.toString());
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
     }
+
 
     @Override
     public int getItemViewType(int position) {
@@ -79,6 +84,11 @@ public class MenuListAdapter extends BaseAdapter{
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
+        /*if(mcart.getProducts().size()==0){
+            ((ShoppingCart)mContext).setContentView(R.layout.activity_shopping_cart);
+            Log.d("Eatery","trying");
+        }*/
+
         ViewHolder holder= null;
         ViewHolderSep holderSep=null;
 
@@ -138,23 +148,40 @@ public class MenuListAdapter extends BaseAdapter{
                     @Override
                     public void onClick(View v) {
                         try{
-                            mcart.update(getItem(position),mcart.getQuantity(getItem(position))+1);
+                            ArrayList<Saleable> mData=new ArrayList<>(mcart.getProducts());
+                            if(!mData.isEmpty()) {
+                                if (mData.get(0).getHotelName().equals(getItem(position).getHotelName())) {
+                                    mcart.update(getItem(position), mcart.getQuantity(getItem(position)) + 1);
+                                    View parent=(View)v.getParent();
+                                    TextView textView=(TextView) parent.findViewById(R.id.food_quantity);
+                                    if(textView==null)
+                                        Log.d("Eatery","damn");
+                                    else
+                                        textView.setText(String.valueOf(mcart.getQuantity(getItem(position))));
+                                } else {
+                                    Toast.makeText(mContext, "Add items from same hotel only!", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                            else
+                                mcart.update(getItem(position), mcart.getQuantity(getItem(position)) + 1);
 
                             //Log.d("Eatery","addButtonupdate");
                             //Log.d("Eatery",getItem(position).toString());
+
 
                         }catch (ProductNotFoundException e){
                             mcart.add(getItem(position),1);
                             //Log.d("Eatery","addButtonupadd\n");
                             //Log.d("Eatery",getItem(position).toString());
+                            View parent=(View)v.getParent();
+                            TextView textView=(TextView) parent.findViewById(R.id.food_quantity);
+                            if(textView==null)
+                                Log.d("Eatery","damn");
+                            else
+                                textView.setText(String.valueOf(mcart.getQuantity(getItem(position))));
                         }
                         //Log.d("Eatery","addButtonCartinfo"+mcart.toString());
-                        View parent=(View)v.getParent();
-                        TextView textView=(TextView) parent.findViewById(R.id.food_quantity);
-                        if(textView==null)
-                            Log.d("Eatery","damn");
-                        else
-                        textView.setText(String.valueOf(mcart.getQuantity(getItem(position))));
+
                     }
                 });
                 holder.mDeleteButton.setOnClickListener(new View.OnClickListener() {
@@ -173,6 +200,8 @@ public class MenuListAdapter extends BaseAdapter{
                         }catch (ProductNotFoundException e){
                             textView.setText("0");
                         }
+
+
 
                     }
                 });

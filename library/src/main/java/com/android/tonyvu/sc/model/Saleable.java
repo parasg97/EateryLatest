@@ -10,5 +10,7 @@ public interface Saleable {
 
     String getName();
 
+    String getHotelName();
+
 
 }

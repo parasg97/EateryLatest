@@ -30,21 +30,21 @@ public class Cheese extends AppCompatActivity {
         mListView=findViewById(R.id.listView_cheese);
         menuListAdapter=new MenuListAdapter(mData,getApplicationContext(),mSeparatorsSet);
         addSeparatorItem("Burger");
-        addItem(new Food_Item("a2","blah blah",R.drawable.ic_egg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("b2","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("c2","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("d2","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("e2","blah blah",R.drawable.ic_non_veg2, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("f2","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("g2","blah blah",R.drawable.ic_egg, BigDecimal.valueOf(100.0)));
+        addItem(new Food_Item("a2","blah blah",R.drawable.ic_egg, BigDecimal.valueOf(100.0),"MacNCheese"));
+        addItem(new Food_Item("b2","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0),"MacNCheese"));
+        addItem(new Food_Item("c2","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0),"MacNCheese"));
+        addItem(new Food_Item("d2","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0),"MacNCheese"));
+        addItem(new Food_Item("e2","blah blah",R.drawable.ic_non_veg2, BigDecimal.valueOf(100.0),"MacNCheese"));
+        addItem(new Food_Item("f2","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0),"MacNCheese"));
+        addItem(new Food_Item("g2","blah blah",R.drawable.ic_egg, BigDecimal.valueOf(100.0),"MacNCheese"));
         addSeparatorItem("Burger2");
-        addItem(new Food_Item("h2","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("i2","blah blah",R.drawable.ic_non_veg2, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("j2","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(10.0)));
-        addItem(new Food_Item("k2","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("l2","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("m2","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
-        addItem(new Food_Item("n2","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0)));
+        addItem(new Food_Item("h2","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0),"MacNCheese"));
+        addItem(new Food_Item("i2","blah blah",R.drawable.ic_non_veg2, BigDecimal.valueOf(100.0),"MacNCheese"));
+        addItem(new Food_Item("j2","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(10.0),"MacNCheese"));
+        addItem(new Food_Item("k2","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0),"MacNCheese"));
+        addItem(new Food_Item("l2","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0),"MacNCheese"));
+        addItem(new Food_Item("m2","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0),"MacNCheese"));
+        addItem(new Food_Item("n2","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0),"MacNCheese"));
 
 
         mListView.setAdapter(menuListAdapter);
