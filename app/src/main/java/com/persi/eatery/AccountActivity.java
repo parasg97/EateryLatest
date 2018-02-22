@@ -72,20 +72,29 @@ public class AccountActivity extends AppCompatActivity {
         mAuth= FirebaseAuth.getInstance();
         mUser=mAuth.getCurrentUser();
         mUid=mUser.getUid();
-        try {
-            mUserDetails.child("UserDetails").child(mUid).child("hostel").setValue(mnewHostel);
-        } catch (Exception e) {
-            e.printStackTrace();
+        Log.d("Eatery", mnewHostel+mnewRoom+mnewNumber);
+        if(!(mnewHostel.equals("")))
+        {
+            try {
+                mUserDetails.child("UserDetails").child(mUid).child("hostel").setValue(mnewHostel);
+            } catch (Exception e) {
+                e.printStackTrace();
+
+            }
         }
-        try {
-            mUserDetails.child("UserDetails").child(mUid).child("room").setValue(mnewRoom);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if(!(mnewRoom.equals(""))) {
+            try {
+                mUserDetails.child("UserDetails").child(mUid).child("room").setValue(mnewRoom);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-        try {
-            mUserDetails.child("UserDetails").child(mUid).child("phone_no").setValue(mnewNumber);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if(!(mnewNumber.equals(""))) {
+            try {
+                mUserDetails.child("UserDetails").child(mUid).child("phone_no").setValue(mnewNumber);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         mIntent = new Intent(this,RestaurantActivity.class);
         mIntent.putExtra("USER_NAME", mUsername);

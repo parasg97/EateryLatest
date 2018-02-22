@@ -28,7 +28,8 @@
         <activity android:name=".Cheese" />
         <activity android:name=".SandP" />
         <activity android:name=".Tables" />
-        <activity android:name=".ThankYou"></activity>
+        <activity android:name=".ThankYou" />
+        <activity android:name=".Checkout"></activity>
     </application>
 
 </manifest>

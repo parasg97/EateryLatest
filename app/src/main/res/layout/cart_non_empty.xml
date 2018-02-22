@@ -145,15 +145,14 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="#FF27AE60"
-        android:onClick="placeOrder"
-        android:text="Place order"
+        android:onClick="checkout"
+        android:text="Checkout"
         android:textColor="@android:color/background_light"
         android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/listView"
-        tools:text="Place order" />
+        tools:text="Checkout" />
 
 </android.support.constraint.ConstraintLayout>

@@ -29,7 +29,6 @@ public class ShoppingCart extends AppCompatActivity {
     private TextView mUser_name;
     private String mUsername;
     private String mPreviousActivity;
-    private ArrayList<Saleable> mData=new ArrayList<>();
     private Cart mCart;
     private ListView mListView;
     private String mUserEmail;
@@ -49,26 +48,8 @@ public class ShoppingCart extends AppCompatActivity {
         }
         else {
             setContentView(R.layout.cart_non_empty);
-            for (final Map.Entry<Saleable, Integer> entry : cartItemMap.entrySet()) {
-                mData.add(new Saleable(){
-                    @Override
-                    public BigDecimal getPrice() {
-                        return entry.getKey().getPrice();
-                    }
-
-                    @Override
-                    public String getName() {
-                        return entry.getKey().getName();
-                    }
-
-                    @Override
-                    public String getHotelName(){return entry.getKey().getHotelName();}
-                });
-
-            }
-
             mListView=findViewById(R.id.listView);
-            CartListAdapter cartListAdapter=new CartListAdapter(ShoppingCart.this,mData);
+            CartListAdapter cartListAdapter=new CartListAdapter(ShoppingCart.this);
             mListView.setAdapter(cartListAdapter);
         }
         }catch (Exception e){
@@ -86,10 +67,16 @@ public class ShoppingCart extends AppCompatActivity {
         mAuth=FirebaseAuth.getInstance();
         mUser=mAuth.getCurrentUser();
         mUserEmail=mUser.getEmail().toString();
+    }
 
-
-
-
+    public void checkEmpty() {
+        ArrayList<Saleable> mData = new ArrayList<>(mCart.getProducts());
+        if(mData.isEmpty()) {
+            Log.d("Eatery", "DATA EMPTY");
+            setContentView(R.layout.activity_shopping_cart);
+        } else {
+            Log.d("Eatery", "DATA NOT EMPTY");
+        }
     }
     public void goToHotelMenu(View v) {
         Intent intent = new Intent(this,RestaurantActivity.class);
@@ -123,7 +110,7 @@ public class ShoppingCart extends AppCompatActivity {
         return false;
     }
 
-    public void placeOrder(View v) {
+    /*public void placeOrder(View v) {
 
         SendMail sm = new SendMail(this, mUserEmail,"New order", mCart.toString());
         if(isNetworkAvailable()){
@@ -134,11 +121,19 @@ public class ShoppingCart extends AppCompatActivity {
         else
             Toast.makeText(this,"Internet is not available",Toast.LENGTH_SHORT).show();
     }
+*/
 
     @Override
     public void onBackPressed(){
        Log.d("Eatery","back_pressed");
 
+    }
+
+    public void checkout(View view)
+    {
+        Intent a = new Intent(this, Checkout.class);
+        finish();
+        startActivity(a);
     }
 
     public void changeLoginId(View v) {

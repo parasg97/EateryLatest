@@ -22,14 +22,15 @@ import java.util.ArrayList;
 
 public class CartListAdapter extends BaseAdapter {
 
-
+        private Context mContext;
         private ArrayList<Saleable> mData;
         private LayoutInflater mLayoutInflater;
         private Cart mCart;
 
 
-        public CartListAdapter(Context context, ArrayList<Saleable> arrayList) {
+        public CartListAdapter(Context context) {
             //mData = arrayList;
+            mContext = context;
             mLayoutInflater = (LayoutInflater.from(context));
             mCart = CartHelper.getCart();
             mData=new ArrayList<>(mCart.getProducts());
@@ -121,6 +122,7 @@ public class CartListAdapter extends BaseAdapter {
                     }catch (ProductNotFoundException e){
                         mData.remove(getItem(position));
                         notifyDataSetChanged();
+                        ((ShoppingCart)mContext).checkEmpty();
                     }
 
                 }
