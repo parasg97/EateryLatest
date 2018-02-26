@@ -4,42 +4,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context="com.persi.eatery.Checkout">
 
     <ImageButton
         android:id="@+id/cancelRegistration"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
         android:onClick="back"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/order"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/order"
         app:srcCompat="@android:drawable/ic_delete" />
+
+    <LinearLayout
+        android:id="@+id/listViewLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/place_order"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/order">
+
+        <TextView
+            android:id="@+id/total_price_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total Price:"
+            android:background="@android:color/white"
+            android:textAlignment="viewStart"
+            android:textColor="@android:color/background_dark"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="389dp"
+            tools:text="Total Price:" />
+
+        <TextView
+            android:id="@+id/total_price_num"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="100"
+            android:background="@android:color/white"
+            android:textAlignment="viewStart"
+            android:textColor="@android:color/background_dark"
+            app:layout_constraintBottom_toTopOf="@+id/place_order"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="100" />
+
+        <ListView
+            android:id="@+id/listView_checkout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/order">
+
+        </ListView>
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/order"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="Order Summary"
+        android:background="@android:color/white"
         android:textAlignment="center"
         android:textColor="@android:color/background_dark"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="Order Summary" />
-
-    <ListView
-        android:id="@+id/listView_checkout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/order" >
-
-    </ListView>
 
     <Button
         android:id="@+id/place_order"
@@ -48,16 +97,15 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:background="#FF27AE60"
-        android:text="Place Order"
         android:onClick="placeOrder"
+
+        android:text="Place Order"
         android:textColor="@android:color/background_light"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/listView"
         tools:text="Checkout" />
 
 

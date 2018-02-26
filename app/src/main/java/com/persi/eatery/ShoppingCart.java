@@ -60,13 +60,15 @@ public class ShoppingCart extends AppCompatActivity {
         if(extras !=null) {
             mUsername = extras.getString("USER_NAME");
             mPreviousActivity = extras.getString("Acitivity");
-            mUser_name = findViewById(R.id.restaurant_listView);
-            mUser_name.setText(mUsername);
+
         }
 
         mAuth=FirebaseAuth.getInstance();
         mUser=mAuth.getCurrentUser();
         mUserEmail=mUser.getEmail().toString();
+        mUsername=mUser.getEmail().toString().substring(0,mUser.getEmail().toString().indexOf('@'));
+        mUser_name = findViewById(R.id.restaurant_listView);
+        mUser_name.setText(mUsername);
     }
 
     public void checkEmpty() {

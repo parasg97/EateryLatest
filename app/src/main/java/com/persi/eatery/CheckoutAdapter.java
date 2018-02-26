@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.tonyvu.sc.exception.ProductNotFoundException;
@@ -66,9 +65,9 @@ public class CheckoutAdapter extends BaseAdapter {
         if (convertView == null) {
             holder = new CheckoutAdapter.ViewHolder();
             convertView = mLayoutInflater.inflate(R.layout.checkout_list_view_row, null);
-            holder.mFoodname =(TextView)convertView.findViewById(R.id.row_1);
-            holder.mFoodPrice=convertView.findViewById(R.id.row_2);
-            holder.mQuantity=convertView.findViewById(R.id.row_3);
+            holder.mFoodname =(TextView)convertView.findViewById(R.id.name);
+            holder.mFoodPrice=convertView.findViewById(R.id.price);
+            holder.mQuantity=convertView.findViewById(R.id.quantity);
             convertView.setTag(holder);
         } else {
             holder = (CheckoutAdapter.ViewHolder)convertView.getTag();

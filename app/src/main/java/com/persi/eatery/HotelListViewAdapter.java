@@ -1,18 +1,12 @@
 package com.persi.eatery;
 
-import android.app.Activity;
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 
@@ -56,8 +50,8 @@ public class HotelListViewAdapter extends BaseAdapter {
         convertView=mLayoutInflater.inflate(R.layout.hotel_list_view_row,null);
         mHotelName=convertView.findViewById(R.id.hotel_name);
         mHotelImage=convertView.findViewById(R.id.row_hotel_image);
-        mLine1=convertView.findViewById(R.id.row_1);
-        mLine2=convertView.findViewById(R.id.row_2);
+        mLine1=convertView.findViewById(R.id.name);
+        mLine2=convertView.findViewById(R.id.price);
         mHotelName.setText(mArrayList.get(position).getHotelName());
         mHotelImage.setImageResource(mArrayList.get(position).getHotelImage());
         mLine1.setText(mArrayList.get(position).getFirstrow());

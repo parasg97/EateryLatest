@@ -33,7 +33,7 @@
         android:textAlignment="viewStart"
         android:textColor="@android:color/background_dark"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/row_1"
+        app:layout_constraintBottom_toTopOf="@+id/name"
         app:layout_constraintStart_toEndOf="@+id/space"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_conversion_absoluteHeight="27dp"
@@ -41,11 +41,11 @@
         tools:text="@string/pizzeria" />
 
     <TextView
-        android:id="@+id/row_1"
+        android:id="@+id/name"
         android:layout_width="164dp"
         android:layout_height="23dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/row_2"
+        app:layout_constraintBottom_toTopOf="@+id/price"
         app:layout_constraintStart_toEndOf="@+id/space"
         app:layout_constraintTop_toBottomOf="@+id/hotel_name"
         tools:layout_conversion_absoluteHeight="19dp"
@@ -53,7 +53,7 @@
         tools:text="South Indian, North Indian" />
 
     <TextView
-        android:id="@+id/row_2"
+        android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -61,7 +61,7 @@
         android:textColor="@android:color/background_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/space"
-        app:layout_constraintTop_toBottomOf="@+id/row_1"
+        app:layout_constraintTop_toBottomOf="@+id/name"
         tools:layout_conversion_absoluteHeight="19dp"
         tools:layout_conversion_absoluteWidth="387dp"
         tools:text="60 min Rs200 minimum" />
