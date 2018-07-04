@@ -37,7 +37,7 @@ public class Cheese extends AppCompatActivity {
         addItem(new Food_Item("e2","blah blah",R.drawable.ic_non_veg2, BigDecimal.valueOf(100.0),"MacNCheese"));
         addItem(new Food_Item("f2","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0),"MacNCheese"));
         addItem(new Food_Item("g2","blah blah",R.drawable.ic_egg, BigDecimal.valueOf(100.0),"MacNCheese"));
-        addSeparatorItem("Burger2");
+        addSeparatorItem("Drinks");
         addItem(new Food_Item("h2","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0),"MacNCheese"));
         addItem(new Food_Item("i2","blah blah",R.drawable.ic_non_veg2, BigDecimal.valueOf(100.0),"MacNCheese"));
         addItem(new Food_Item("j2","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(10.0),"MacNCheese"));

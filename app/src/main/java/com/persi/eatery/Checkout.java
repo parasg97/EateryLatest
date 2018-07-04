@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -45,6 +46,7 @@ public class Checkout extends AppCompatActivity {
     private String mUid;
     private String mUserEmail;
     private DataSnapshot mDataSnapshot;
+    private UserDetails mUserDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,28 +64,22 @@ public class Checkout extends AppCompatActivity {
         mUser=mAuth.getCurrentUser();
         mUid=mUser.getUid();
         mDatabaseReference= FirebaseDatabase.getInstance().getReference().child("UserDetails").child(mUid);
-        Log.d("Eatery",mUid);
+        //Log.d("Eatery",mUid);
         mUserEmail=mUser.getEmail();
-        mDatabaseReference.addValueEventListener(new ValueEventListener() {
+        mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.d("Eatery","whatt");
-                mRealName=dataSnapshot.child("name").getValue().toString();
-                mHostel=dataSnapshot.child("hostel").getValue().toString();
-                mRoom=dataSnapshot.child("room").getValue().toString();
-                mPhoneNumber=dataSnapshot.child("phone_no").getValue().toString();
-
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                mUserDetails=dataSnapshot.getValue(UserDetails.class);
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
 
-
-
     }
+
     public void back(View v) {
         Intent intent = new Intent(this,ShoppingCart.class);
         finish();
@@ -98,18 +94,33 @@ public class Checkout extends AppCompatActivity {
     }
     public void placeOrder(View v) {
 
-        SendMail sm1 = new SendMail(this,mUserEmail ,"New order", "Hi a new order is placed by you:\n"+mCart.toString());
-       // SendMail sm2 = new SendMail(this, "eateryps@gmail.com","New order", "New order has" +
-         //       "been placed by "+mRealName+" "+mPhoneNumber+" "+mHostel+" "+mRoom + mCart.toString());
+
+        mUserEmail=mUser.getEmail();
+        mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                mUserDetails=dataSnapshot.getValue(UserDetails.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        Log.d("Eatery","realname:"+mUserDetails.getName());
+        //Log.d("Eatery","realname:"+mPhoneNumber);
+        //Log.d("Eatery","realname:"+mHostel);
+
+        //SendMail sm1 = new SendMail(this,mUserEmail ,"New order", "Hi a new order is placed by you:\n"+mCart.toString());
+        /*SendMail sm2 = new SendMail(this, "eateryps@gmail.com","New order", "New order has" + "been placed by "+mRealName+" "+mPhoneNumber+" "+mHostel+" "+mRoom + mCart.toString());
         if(isNetworkAvailable()){
-            sm1.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+            sm2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
             //sm2.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
             Log.d("Eatery","mail:"+mUserEmail);
         }
-
         else
             Toast.makeText(this,"Internet is not available",Toast.LENGTH_SHORT).show();
-        Log.d("Eatery","realname:"+mRealName);
+        Log.d("Eatery","realname:"+mRealName);*/
     }
 
 }

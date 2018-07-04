@@ -42,7 +42,7 @@ public class SandP extends AppCompatActivity {
         addItem(new Food_Item("e4","blah blah",R.drawable.ic_non_veg2, BigDecimal.valueOf(100.0),"SandPiper"));
         addItem(new Food_Item("f4","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0),"SandPiper"));
         addItem(new Food_Item("g4","blah blah",R.drawable.ic_egg, BigDecimal.valueOf(100.0),"SandPiper"));
-        addSeparatorItem("Burger2");
+        addSeparatorItem("Drinks");
         addItem(new Food_Item("h4","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(100.0),"SandPiper"));
         addItem(new Food_Item("i4","blah blah",R.drawable.ic_non_veg2, BigDecimal.valueOf(100.0),"SandPiper"));
         addItem(new Food_Item("j4","blah blah",R.drawable.ic_veg, BigDecimal.valueOf(10.0),"SandPiper"));

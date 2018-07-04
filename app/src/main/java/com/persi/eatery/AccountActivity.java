@@ -14,6 +14,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.json.JSONArray;
+
 public class AccountActivity extends AppCompatActivity {
     private TextView mUser_name;
     private String mUsername;
@@ -48,6 +50,7 @@ public class AccountActivity extends AppCompatActivity {
         mHostelView=findViewById(R.id.hostel);
         mRoomView=findViewById(R.id.room);
         mNumberView=findViewById(R.id.phone_number);
+
 
     }
     public void goToHotelMenu(View v) {

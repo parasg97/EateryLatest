@@ -34,6 +34,7 @@ public class ShoppingCart extends AppCompatActivity {
     private String mUserEmail;
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
+    private CartListAdapter cartListAdapter;
 
     private Map<Saleable, Integer> cartItemMap = new HashMap<Saleable, Integer>();
 
@@ -49,7 +50,7 @@ public class ShoppingCart extends AppCompatActivity {
         else {
             setContentView(R.layout.cart_non_empty);
             mListView=findViewById(R.id.listView);
-            CartListAdapter cartListAdapter=new CartListAdapter(ShoppingCart.this);
+            cartListAdapter=new CartListAdapter(ShoppingCart.this);
             mListView.setAdapter(cartListAdapter);
         }
         }catch (Exception e){
@@ -145,5 +146,11 @@ public class ShoppingCart extends AppCompatActivity {
         intent.putExtra("USER_NAME", mUsername);
         finish();
         startActivity(intent);
+    }
+    public void clearCart(View v){
+        mCart.clear();
+        cartListAdapter.notifyDataSetChanged();
+        setContentView(R.layout.activity_shopping_cart);
+
     }
 }

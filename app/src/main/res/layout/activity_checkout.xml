@@ -29,7 +29,7 @@
         android:layout_marginTop="8dp"
         android:orientation="vertical"
         android:background="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/place_order"
+        app:layout_constraintBottom_toTopOf="@+id/checkout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/order">
@@ -56,7 +56,7 @@
             android:background="@android:color/white"
             android:textAlignment="viewStart"
             android:textColor="@android:color/background_dark"
-            app:layout_constraintBottom_toTopOf="@+id/place_order"
+            app:layout_constraintBottom_toTopOf="@+id/checkout"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="100" />
 
@@ -91,7 +91,7 @@
         tools:text="Order Summary" />
 
     <Button
-        android:id="@+id/place_order"
+        android:id="@+id/checkout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
